@@ -1,0 +1,43 @@
+:root{
+    --primary-color:rgb(202, 85, 85);
+    --secoundary-color:rgb(248, 210, 210);
+
+}
+body{
+    text-align: center;
+    background-color: var(--primary-color);
+}
+
+h1{
+    text-align: center;
+
+}
+
+label {
+    padding-top:1rem;
+    text-align: center;
+    margin-top: 1rem;
+    display: block;
+    margin: auto;
+}
+
+button {
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+}
+.container{
+    TEXT-ALIGN: center;
+    width: MAX-CONTENT;
+    margin: auto;
+  }
+.initial-price {
+    text-align: center;
+    color: lightsalmon;
+}
+.container-inner {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    border-bottom-left-radius: 1rem ;
+}
