@@ -34,7 +34,7 @@ function calculateProfitAndLoss(initial,quantity,current){
      var profit = (current-initial)*quantity;
      var profitPercentage  = (profit/current)*100;
      var profitPer = profitPercentage.toFixed(2); 
-     showOutput('Hey Your Current Profit is'<hr> + profit + 'And' <hr> 'Profit Percentage is '+profitPer +'%.');
+     showOutput('Hey Your Current Profit is' + profit + 'And Profit Percentage is '+profitPer +'%.');
  } else {
        showOutput("On Pain No Gain, No Gain No Pain");
  }
