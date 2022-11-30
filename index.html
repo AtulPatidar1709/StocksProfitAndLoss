@@ -1,41 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Profit Or Loss Calculator</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+  </head>
+    <body>
+    <div id="wrapper">
+      <h1 id="app-title">Profit or Loss Calculator</h1>
+      <p id="app-description">
+        Enter the details to find the Profit or Loss 
+      </p>
+      <label for="invesment-price-input">Investment Price</label>
+      <input type="number" id="invesment-price-input" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href="index.css" />
-    <title>P&L viewer</title>
-</head>
+      <label for="quantity-input">Trade Quantity</label>
+      <input type="number" id="quantity-input" />
 
-<body>
-    <div class="container">
-    <h1>where my Stocks Go!</h1>
-    <main>
-    <div class = "container-inner">
-        <label for="initial-price"> Initial Price<br/>
-        <input type = "text" id="initial-price" placeholder="Enter Initial Price"/> </label>
-    
-        <label for="stocks-quantity" >Quantitty of Stocks<br/>
-        <input type = "text" id="stocks-quantity" placeholder="Enter Your Quatity" /></label>
-        
-        <label for="current-price">Current Price <br/>
-        <input type="text" id = "current-price" placeholder="Enter Current Price of Stocks" /></label>
-    
-    
-        <button id="submit-btn">Tell Me!!</button>
-    
-        <div id="output-box"></div>
+      <label for="market-price-input">Current Price</label>
+      <input type="number" id="market-price-input" />
+
+      <button id="submit-btn">Calculate</button>
+
+      <p id="message-box">Please enter the investment details</p>
+
+          <p id="footer">Created by Atul Patidar</p>
 
     </div>
-</div>
-
-
-
-    </main>
     <script src="index.js"></script>
-
-</body>
-
+  </body>
 </html>

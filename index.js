@@ -1,45 +1,60 @@
-var initialprice = document.querySelector('#initial-price');
-var stocksQuantity  = document.querySelector('#stocks-quantity');
-var currentprice = document.querySelector('#current-price');
-var submitBtn = document.querySelector('#submit-btn');
-var outputE1 = document.querySelector('#output-box');
+const investmentPriceRef = document.querySelector( "#invesment-price-input" );
+const quantityRef = document.querySelector( "#quantity-input" );
+const marketPriceRef = document.querySelector( "#market-price-input" );
+const submitButton = document.querySelector( "#submit-btn" );
+const messageBox = document.querySelector( "#message-box" );
 
 
-submitBtn.addEventListener('click',submitHandler);
+function getProfitOrLoss() {
 
-function submitHandler(){
-    var ip = Number(initialprice.value);
-    var qty = Number(stocksQuantity.value);
-    var curr = Number(currentprice.value);
-    
-    calculateProfitAndLoss(ip,qty,curr);
+    var investmentPrice = Number( investmentPriceRef.value );
+    var quantity = Number( quantityRef.value );
+    var marketPrice = Number( marketPriceRef.value );
+
+    var totalInvestment = investmentPrice * quantity;
+    var totalReturns = ( marketPrice - investmentPrice ) * quantity;
+    var percentageReturns = ( totalReturns / totalInvestment ) * 100;
+
+    var investmentStatus = "";
+    if ( totalReturns > 0 )
+        investmentStatus = "profit";
+    else if ( totalReturns < 0 )
+        investmentStatus = "loss";
+    else
+        investmentStatus = "neutral";
+
+    return {
+        absolute: Math.abs( totalReturns ),
+        percentage: Math.abs( percentageReturns ),
+        status: investmentStatus
+    };
+
 }
 
 
+function clickEventListener() {
 
-function calculateProfitAndLoss(initial,quantity,current){
- 
-    if(initial > current) {
-   
-         var loss = (initial-current)*quantity;
+    var returns = getProfitOrLoss();
 
-         var lossPercentage = (loss/initial)*100;   
-         
-         var losspr = lossPercentage.toFixed(2);
-         showOutput('Hey Your Current Loss is ' + loss + ' and the Percentage is' + losspr +'%.');
+    if ( investmentPriceRef.value === '' || quantityRef.value === '' || marketPriceRef.value === '' ) {
+        messageBox.innerText = "Please enter the investment details!";
+    } else {
 
- } 
+        if ( returns.status === "profit" ) {
+            messageBox.style.color = "#06d6a0";
+            messageBox.innerText = `It's Amazing! Your net profit is: RS${returns.absolute} (+${returns.percentage}%)`;
+        }
+        else if ( returns.status === "loss" ) {
+            messageBox.style.color = "#f94144";
+            messageBox.innerText = `Sorry! Your net loss is: Rs${returns.absolute} (-${returns.percentage}%)`;
+        }
+        else {
+            messageBox.style.color = "#000000";
+            messageBox.innerText = "No profit or loss";
+        }
 
- else if(current > initial) {
-     var profit = (current-initial)*quantity;
-     var profitPercentage  = (profit/current)*100;
-     var profitPer = profitPercentage.toFixed(2); 
-     showOutput('Hey Your Current Profit is' + profit + 'And Profit Percentage is '+profitPer +'%.');
- } else {
-       showOutput("On Pain No Gain, No Gain No Pain");
- }
+    }
+
 }
 
-function showOutput(message){
-    outputE1.innerHTML = message;
-}
+submitButton.addEventListener( "click", clickEventListener );
